@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- NuGet metadata -->
+    <PackageId>OC.Automate.Bluesky</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Owain Williams</Authors>
+    <Description>Bluesky connection type and action for Umbraco Automate. Post to Bluesky as part of an automation workflow.</Description>
+    <PackageTags>umbraco;automate;bluesky;atproto;umbraco-marketplace</PackageTags>
+    <PackageProjectUrl>https://github.com/OwainWilliams/OC.Automate.Bluesky</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/OwainWilliams/OC.Automate.Bluesky</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
+    <PackageIcon>ocAutomateBluesky.png</PackageIcon>
+
+    <!-- Pack settings -->
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\README_nuget.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\..\ocAutomateBluesky.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Automate.Core" Version="17.0.0-beta" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="[17.4.0, 18.0.0)" />
+  </ItemGroup>
+
+</Project>
