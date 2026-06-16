@@ -1,0 +1,27 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AuthorDetails": {
+    "Name": "Owain Williams",
+    "ImageUrl": "https://github.com/OwainWilliams.png",
+    "Url": "https://owain.codes",
+    "Description": "Owain Williams is a Senior Developer at Initials Labs, a multi-awarded Umbraco MVP"
+  },
+  "Category": "Editor Tools",
+  "Description": "Bluesky connection type and action for Umbraco Automate. Post to Bluesky as part of an automation workflow.",
+  "LicenseTypes": ["Free"],
+  "IssueTrackerUrl": "https://github.com/OwainWilliams/OC.Automate.Bluesky/issues",
+  "PackageType": "Package",
+  "Tags": ["automate", "bluesky", "atproto", "social media"],
+  "Title": "OC.Automate.Bluesky",
+  "RelatedPackages": [
+    {
+      "PackageId": "Umbraco.Automate",
+      "Description": "Core automation system for Umbraco CMS"
+    },
+    {
+      "PackageId": "OC.Automate.Mastodon",
+      "Description": "Mastodon connection type and action for Umbraco Automate"
+    }
+  ],
+  "LookingForContributors": true
+}
