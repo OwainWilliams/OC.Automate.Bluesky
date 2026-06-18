@@ -10,7 +10,7 @@
     <Version>1.0.2</Version>
     <Authors>Owain Williams</Authors>
     <Description>Bluesky connection type and action for Umbraco Automate. Post to Bluesky as part of an automation workflow.</Description>
-    <PackageTags>umbraco;automate;bluesky;atproto;umbraco-marketplace</PackageTags>
+    <PackageTags>umbraco;automate;bluesky;umbraco-marketplace</PackageTags>
     <PackageProjectUrl>https://github.com/OwainWilliams/OC.Automate.Bluesky</PackageProjectUrl>
     <RepositoryUrl>https://github.com/OwainWilliams/OC.Automate.Bluesky</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
