@@ -70,7 +70,7 @@ public class SendBlueskyPostAction : ActionBase<BlueskyPostSettings>
                 StepRunErrorCategory.ConfigurationError);
         }
 
-        var session = await sessionResponse.Content.ReadFromJsonAsync<BlueskyConnectionType.BlueskySessionResponse>(
+        var session = await sessionResponse.Content.ReadFromJsonAsync<BlueskySessionResponse>(
             cancellationToken: cancellationToken);
 
         if (string.IsNullOrWhiteSpace(session?.AccessJwt) || string.IsNullOrWhiteSpace(session?.Did))

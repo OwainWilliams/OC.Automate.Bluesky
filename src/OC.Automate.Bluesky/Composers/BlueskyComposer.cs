@@ -1,8 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
+using OC.Automate.Bluesky.Composers;
 using Umbraco.Automate.Core.Actions;
 using Umbraco.Automate.Core.Connections;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
+using Umbraco.Cms.Infrastructure.Manifest;
 
 namespace OC.Automate.Bluesky;
 
@@ -18,5 +20,7 @@ public class BlueskyComposer : IComposer
 
         builder.WithCollectionBuilder<ActionCollectionBuilder>()
             .Add<SendBlueskyPostAction>();
+
+        builder.Services.AddSingleton<IPackageManifestReader, BlueSkyPackageManifestReader>();
     }
 }
