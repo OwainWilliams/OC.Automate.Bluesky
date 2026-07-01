@@ -66,7 +66,7 @@ Add the **Send Bluesky Post** action to any automation and select your Bluesky c
 
 | Package version | Umbraco Automate | Umbraco CMS |
 |---|---|---|
-| 1.x | 17.x | 17.x |
+| 1.x | 17.x – 18.x | 17.x – 18.x |
 
 ## License
 
