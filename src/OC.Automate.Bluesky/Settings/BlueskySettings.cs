@@ -2,7 +2,7 @@ namespace OC.Automate.Bluesky;
 
 public class BlueskySettings
 {
-    public const string SectionName = "OwainCodes:Automate:Bluesky";
+    public const string SectionName = "Umbraco:Automate:Providers:OCAutomateBluesky";
 
     public Dictionary<string, string> AppPasswords { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }

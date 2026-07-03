@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using OC.Automate.Bluesky.Composers;
+using OC.Automate.Bluesky.Settings;
 using Umbraco.Automate.Core.Actions;
 using Umbraco.Automate.Core.Connections;
 using Umbraco.Cms.Core.Composing;

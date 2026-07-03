@@ -1,8 +1,8 @@
-using System.Net.Http.Json;
 using Microsoft.Extensions.Options;
+using System.Net.Http.Json;
 using Umbraco.Automate.Core.Connections;
 
-namespace OC.Automate.Bluesky;
+namespace OC.Automate.Bluesky.Settings;
 
 [ConnectionType("bluesky", "Bluesky")]
 public class BlueskyConnectionType : ConnectionTypeBase<BlueskyConnectionSettings>

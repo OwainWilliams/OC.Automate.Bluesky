@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using System.Net.Http.Json;
 using Umbraco.Automate.Core.Actions;
 
-namespace OC.Automate.Bluesky;
+namespace OC.Automate.Bluesky.Settings;
 
 [Action("blueskySendPost", "Send Bluesky Post", ConnectionTypeAlias = "bluesky")]
 public class SendBlueskyPostAction : ActionBase<BlueskyPostSettings>

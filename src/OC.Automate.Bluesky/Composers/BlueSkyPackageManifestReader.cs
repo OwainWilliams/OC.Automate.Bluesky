@@ -16,14 +16,7 @@ namespace OC.Automate.Bluesky.Composers
                     Name = "OC Automate Bluesky",
                     Version = version,
                     AllowTelemetry = true,
-                    Extensions = [
-                     new
-                        {
-                            name = "OC Automate Bluesky Bundle",
-                            alias = "OC.Automate.Bluesky.Bundle",
-                            type = "bundle",
-                            js = "/App_Plugins/OC.Automate.Bluesky/oc-automate-bluesky.js?v=" + version
-                        }]
+                    Extensions = []
 
                 }
             });
