@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System.Net.Http.Json;
 using Umbraco.Automate.Core.Actions;
 
@@ -10,18 +9,15 @@ public class SendBlueskyPostAction : ActionBase<BlueskyPostSettings>
 {
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<SendBlueskyPostAction> _logger;
-    private readonly IOptionsMonitor<BlueskySettings> _blueskySettings;
 
     public SendBlueskyPostAction(
         ActionInfrastructure infrastructure,
         IHttpClientFactory httpClientFactory,
-        ILogger<SendBlueskyPostAction> logger,
-        IOptionsMonitor<BlueskySettings> blueskySettings)
+        ILogger<SendBlueskyPostAction> logger)
         : base(infrastructure)
     {
         _httpClientFactory = httpClientFactory;
         _logger = logger;
-        _blueskySettings = blueskySettings;
     }
 
     public override async Task<ActionResult> ExecuteAsync(ActionContext context, CancellationToken cancellationToken)
@@ -31,18 +27,10 @@ public class SendBlueskyPostAction : ActionBase<BlueskyPostSettings>
         if (connectionSettings is null
             || string.IsNullOrWhiteSpace(connectionSettings.PdsUrl)
             || string.IsNullOrWhiteSpace(connectionSettings.Identifier)
-            || string.IsNullOrWhiteSpace(connectionSettings.ConnectionName))
+            || string.IsNullOrWhiteSpace(connectionSettings.AppPassword))
         {
             return ActionResult.Failed(
                 new InvalidOperationException("No Bluesky connection configured."),
-                StepRunErrorCategory.ConfigurationError);
-        }
-
-        if (!_blueskySettings.CurrentValue.AppPasswords.TryGetValue(connectionSettings.ConnectionName, out var appPassword)
-            || string.IsNullOrWhiteSpace(appPassword))
-        {
-            return ActionResult.Failed(
-                new InvalidOperationException($"No app password found for connection name '{connectionSettings.ConnectionName}' in appsettings (OwainCodes:Automate:Bluesky:AppPasswords)."),
                 StepRunErrorCategory.ConfigurationError);
         }
 
@@ -59,7 +47,7 @@ public class SendBlueskyPostAction : ActionBase<BlueskyPostSettings>
         // Create session to get accessJwt and DID
         var sessionResponse = await client.PostAsJsonAsync(
             $"{pdsUrl}/xrpc/com.atproto.server.createSession",
-            new { identifier = connectionSettings.Identifier, password = appPassword },
+            new { identifier = connectionSettings.Identifier, password = connectionSettings.AppPassword },
             cancellationToken);
 
         if (!sessionResponse.IsSuccessStatusCode)

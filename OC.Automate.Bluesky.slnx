@@ -6,4 +6,5 @@
     <File Path="umbraco-marketplace.json" />
   </Folder>
   <Project Path="src/OC.Automate.Bluesky/OC.Automate.Bluesky.csproj" />
+  <Project Path="src/Umbraco17/Umbraco17/Umbraco17.csproj" />
 </Solution>

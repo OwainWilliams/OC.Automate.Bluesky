@@ -22,35 +22,45 @@ No further setup required. The composer registers itself automatically via Umbra
 
 In your Bluesky account go to **Settings → Privacy and Security → App Passwords** and create a new app password. Copy the generated password.
 
-### 2. Add the app password to appsettings
+### 2. Create the connection in the backoffice
 
-App passwords are stored in configuration, not the backoffice. Add the following to your `appsettings.json` (or `appsettings.Production.json`):
+1. Go to **Automate → Connections** and create a new **Bluesky** connection.
+2. Enter the **PDS URL** (defaults to `https://bsky.social`).
+3. Enter your **Identifier** — your Bluesky handle (e.g. `yourname.bsky.social`) or email.
+4. Enter the **App Password** you generated in step 1.
+5. Click **Test connection** to verify.
+
+### 3. (Optional) Store values in appsettings
+
+Instead of entering values directly, you can store them under Umbraco Automate's built-in **Variables** (non-sensitive) and **Secrets** (sensitive) config sections:
 
 ```json
 {
-  "OwainCodes:Automate:Bluesky": {
-    "AppPasswords": {
-      "myaccount": "your-app-password-here"
+  "Umbraco": {
+    "Automate": {
+      "Variables": {
+        "BlueskyPdsUrl": "https://bsky.social"
+      },
+      "Secrets": {
+        "BlueskyAppPassword": "your-app-password-here"
+      }
     }
   }
 }
 ```
 
-The key (`myaccount` above) is a name you choose — you will reference it when creating the connection in the backoffice. You can add multiple entries if you need to post from more than one account.
+Then reference them in the connection fields using `$` syntax:
 
-For production it is recommended to supply passwords via environment variables rather than a config file:
+| Field | Reference |
+|---|---|
+| PDS URL | `$Umbraco:Automate:Variables:BlueskyPdsUrl` |
+| App Password | `$Umbraco:Automate:Secrets:BlueskyAppPassword` |
+
+The key names (`BlueskyPdsUrl`, `BlueskyAppPassword`) are your choice — they just have to match the `$` reference. For production, supply secrets via environment variables:
 
 ```
-OwainCodes__Automate__Bluesky__AppPasswords__myaccount=your-app-password-here
+Umbraco__Automate__Secrets__BlueskyAppPassword=your-app-password-here
 ```
-
-### 3. Create the connection in the backoffice
-
-1. Go to **Automate → Connections** and create a new **Bluesky** connection.
-2. Enter the PDS URL (defaults to `https://bsky.social`).
-3. Enter your **Identifier** — your Bluesky handle (e.g. `yourname.bsky.social`) or email.
-4. Enter the **Connection Name** — this must match the key you used in appsettings (e.g. `myaccount`).
-5. Click **Test connection** to verify.
 
 ## Usage
 
@@ -62,10 +72,19 @@ Add the **Send Bluesky Post** action to any automation and select your Bluesky c
 | Post URL | Optional URL appended to the post on a new line. |
 | Content Warning | Optional label: `sexual`, `nudity`, `porn`, or `graphic-media`. |
 
+## Migrating from 1.x
+
+Version 2.x replaces the package-specific config section with Umbraco Automate's built-in Variables/Secrets pattern:
+
+- The `OwainCodes:Automate:Bluesky:AppPasswords` / `Umbraco:Automate:Providers:OCAutomateBluesky` config sections are no longer read — remove them.
+- The **Connection Name** field is gone. The app password is now entered directly on the connection, either as a literal value or as a `$Umbraco:Automate:Secrets:...` reference (see above).
+- Existing Bluesky connections must be edited (or recreated) in the backoffice to add the app password.
+
 ## Compatibility
 
 | Package version | Umbraco Automate | Umbraco CMS |
 |---|---|---|
+| 2.x | 17.x – 18.x | 17.x – 18.x |
 | 1.x | 17.x – 18.x | 17.x – 18.x |
 
 ## License

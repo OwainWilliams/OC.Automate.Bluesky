@@ -34,3 +34,6 @@ umbraco/models/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local secrets — Automate Variables/Secrets live here on dev machines
+**/appsettings.Development.json

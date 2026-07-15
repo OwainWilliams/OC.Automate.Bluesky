@@ -13,8 +13,7 @@ public class BlueskyComposer : IComposer
 {
     public void Compose(IUmbracoBuilder builder)
     {
-        builder.Services.AddOptions<BlueskySettings>()
-            .BindConfiguration(BlueskySettings.SectionName);
+        builder.Services.AddHttpClient();
 
         builder.WithCollectionBuilder<ConnectionTypeCollectionBuilder>()
             .Add<BlueskyConnectionType>();

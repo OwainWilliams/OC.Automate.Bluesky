@@ -7,7 +7,7 @@
 
     <!-- NuGet metadata -->
     <PackageId>OC.Automate.Bluesky</PackageId>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Owain Williams</Authors>
     <Description>Bluesky connection type and action for Umbraco Automate. Post to Bluesky as part of an automation workflow.</Description>
     <PackageTags>umbraco;automate;bluesky;umbraco-marketplace</PackageTags>
@@ -31,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    	<PackageReference Include="Umbraco.Automate.Core" Version="[17.0.0-beta, 19.0.0)" />
-	    <PackageReference Include="Umbraco.Cms.Core" Version="[17.4.0, 19.0.0)" />
+    <PackageReference Include="Umbraco.Automate.Core" Version="[17.0.0, 19.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="[17.4.0, 19.0.0)" />
   </ItemGroup>
 
 </Project>
