@@ -4,7 +4,10 @@ using Umbraco.Automate.Core.Actions;
 
 namespace OC.Automate.Bluesky.Settings;
 
-[Action("blueskySendPost", "Send Bluesky Post", ConnectionTypeAlias = "bluesky")]
+[Action("blueskySendPost", "Send Bluesky Post",
+    ConnectionTypeAlias = "bluesky",
+    Icon = "icon-flash",
+    Group = "Social Networks")]
 public class SendBlueskyPostAction : ActionBase<BlueskyPostSettings>
 {
     private readonly IHttpClientFactory _httpClientFactory;
