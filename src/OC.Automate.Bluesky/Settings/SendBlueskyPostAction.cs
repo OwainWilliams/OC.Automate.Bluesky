@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
+using OC.Automate.Bluesky.RichText;
 using Umbraco.Automate.Core.Actions;
 
 namespace OC.Automate.Bluesky.Settings;
@@ -83,6 +84,11 @@ public class SendBlueskyPostAction : ActionBase<BlueskyPostSettings>
             ["text"] = text,
             ["createdAt"] = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
         };
+
+        // Bluesky does not auto-detect links; without facets the URL is dead plain text.
+        var facets = BlueskyFacetBuilder.DetectFacets(text);
+        if (facets.Count > 0)
+            record["facets"] = facets;
 
         if (!string.IsNullOrWhiteSpace(settings.ContentWarning))
         {
